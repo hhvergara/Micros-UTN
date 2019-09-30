@@ -1,0 +1,89 @@
+#include <hidef.h> /* for EnableInterrupts macro */
+#include "derivative.h" /* include peripheral declarations */
+
+unsigned char *buffer_tx;
+unsigned char cant_tx;
+
+void PutSCI(unsigned char *buffer, unsigned char cant){
+	
+	while (SCIC2_TCIE);
+	buffer_tx=buffer;
+	if (cant=0){
+		while (*buffer++) cant_tx ++;
+				
+	}else cant_tx=cant;
+	SCIC2_TCIE=1;
+	
+}
+
+interrupt VectorNumber_Vscirx void SCI_RXisr(void){
+	(void)SCIS1;
+	if (cant_tx){
+		SCID=*buffer_tx ++;
+		cant_tx --;		
+	}else SCIC2_TCIE=0;
+	
+}
+
+void InitSCI(void) {
+	SCIBD = 52;
+	SCIC1 = 0;
+	SCIC2 = 0X0C;
+	SCIC3 = 0;
+	SCIC2_RIE = 1;
+
+}
+/*
+interrupt VectorNumber_Vscirx void SCI_RXisr(void){
+	(void)SCIS1;
+	rx_byte=SCID;
+	
+}*/
+/*
+if (rx_byte){
+	
+	rx_byte=0;
+}
+*/
+
+
+
+
+
+void main(void) {
+	
+	InitSCI();
+	
+	
+  EnableInterrupts;
+  /* include your code here */
+
+  
+
+  for(;;) {
+    __RESET_WATCHDOG();	/* feeds the dog */
+  } /* loop forever */
+  /* please make sure that you never leave main */
+}
+
+
+
+void InitSCI(void) {
+	SCIBD = 52;
+	SCIC1 = 0;
+	SCIC2 = 0X0C;
+	SCIC3 = 0;
+	SCIC2_RIE = 1;
+
+}
+
+interrupt VectorNumber_Vscirx void SCI_RXisr(void){
+	(void)SCIS1;
+	rx_byte=SCID;
+	
+}
+/*
+if (rx_byte){
+	
+	rx_byte=0;
+}*/
