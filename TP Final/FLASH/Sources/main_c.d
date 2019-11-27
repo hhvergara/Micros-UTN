@@ -6,5 +6,6 @@ Sources/main_c.obj: \
 	C:/Freescale/CW\ MCU\ v10.6/MCU/lib/hc08c/include/stdtypes.h \
 	C:/Users/user/workspace/TP\ Final/Project_Headers/derivative.h \
 	C:/Users/user/workspace/TP\ Final/Project_Headers/mc9s08sh8.h \
-	C:/Users/user/workspace/TP\ Final/Project_Headers/SCI.h 
+	C:/Users/user/workspace/TP\ Final/Project_Headers/SCI.h \
+	C:/Users/user/workspace/TP\ Final/Project_Headers/keyboard.h 
 

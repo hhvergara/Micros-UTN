@@ -7,30 +7,37 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS_QUOTED += \
 "../Sources/SCI.c" \
+"../Sources/keyboard.c" \
 "../Sources/main.c" \
 
 C_SRCS += \
 ../Sources/SCI.c \
+../Sources/keyboard.c \
 ../Sources/main.c \
 
 OBJS += \
 ./Sources/SCI_c.obj \
+./Sources/keyboard_c.obj \
 ./Sources/main_c.obj \
 
 OBJS_QUOTED += \
 "./Sources/SCI_c.obj" \
+"./Sources/keyboard_c.obj" \
 "./Sources/main_c.obj" \
 
 C_DEPS += \
 ./Sources/SCI_c.d \
+./Sources/keyboard_c.d \
 ./Sources/main_c.d \
 
 C_DEPS_QUOTED += \
 "./Sources/SCI_c.d" \
+"./Sources/keyboard_c.d" \
 "./Sources/main_c.d" \
 
 OBJS_OS_FORMAT += \
 ./Sources/SCI_c.obj \
+./Sources/keyboard_c.obj \
 ./Sources/main_c.obj \
 
 
@@ -48,9 +55,17 @@ Sources/%.d: ../Sources/%.c
 	
 	@echo ' '
 
-Sources/main_c.obj: ../Sources/main.c
+Sources/keyboard_c.obj: ../Sources/keyboard.c
 	@echo 'Building file: $<'
 	@echo 'Executing target #2 $<'
+	@echo 'Invoking: HCS08 Compiler'
+	"$(HC08ToolsEnv)/chc08" -ArgFile"Sources/keyboard.args" -ObjN="Sources/keyboard_c.obj" "$<" -Lm="$(@:%.obj=%.d)" -LmCfg=xilmou
+	@echo 'Finished building: $<'
+	@echo ' '
+
+Sources/main_c.obj: ../Sources/main.c
+	@echo 'Building file: $<'
+	@echo 'Executing target #3 $<'
 	@echo 'Invoking: HCS08 Compiler'
 	"$(HC08ToolsEnv)/chc08" -ArgFile"Sources/main.args" -ObjN="Sources/main_c.obj" "$<" -Lm="$(@:%.obj=%.d)" -LmCfg=xilmou
 	@echo 'Finished building: $<'

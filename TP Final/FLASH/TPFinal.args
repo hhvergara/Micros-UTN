@@ -5,6 +5,7 @@
 -WmsgSd1100
 -WmsgSd1912 
 -Add("$(ProjDirPath)/FLASH/Sources/SCI_c.obj"
+"$(ProjDirPath)/FLASH/Sources/keyboard_c.obj"
 "$(ProjDirPath)/FLASH/Sources/main_c.obj"
 "$(ProjDirPath)/FLASH/Project_Settings/Startup_Code/start08_c.obj"
 "$(ProjDirPath)/FLASH/Lib/mc9s08sh8_c.obj"

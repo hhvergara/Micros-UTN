@@ -13,6 +13,7 @@ Linker      : SmartLinker V-5.0.51 Build 14019, Jan 20 2014
 FILE SECTION
 ---------------------------------------------------------------------------------------------
 SCI_c.obj                               Model: SMALL,         Lang: ANSI-C
+keyboard_c.obj                          Model: SMALL,         Lang: ANSI-C
 main_c.obj                              Model: SMALL,         Lang: ANSI-C
 start08_c.obj                           Model: SMALL,         Lang: ANSI-C
 mc9s08sh8_c.obj                         Model: SMALL,         Lang: ANSI-C
@@ -24,124 +25,126 @@ Entry point: 0xE07B (_Startup)
 _startupData is allocated at 0xE084 and uses 6 Bytes
 extern struct _tagStartup {
   unsigned nofZeroOut     1
-  _Range   pZeroOut       0x100     9
-  _Copy    *toCopyDownBeg 0xE351
+  _Range   pZeroOut       0x100     17
+  _Copy    *toCopyDownBeg 0xE644
 } _startupData;
 
 *********************************************************************************************
 SECTION-ALLOCATION SECTION
 Section Name                    Size  Type     From       To       Segment
 ---------------------------------------------------------------------------------------------
-.data                              3   R/W      0x100      0x102   RAM
+.data                              7   R/W      0x100      0x106   RAM
 .init                            132     R     0xE000     0xE083   ROM
 .startData                        14     R     0xE084     0xE091   ROM
-.rodata1                         284     R     0xE092     0xE1AD   ROM
-.text                            419     R     0xE1AE     0xE350   ROM
-.copy                              9     R     0xE351     0xE359   ROM
+.rodata                           17     R     0xE092     0xE0A2   ROM
+.rodata1                         371     R     0xE0A3     0xE215   ROM
+.text                           1070     R     0xE216     0xE643   ROM
+.copy                             13     R     0xE644     0xE650   ROM
 .abs_section_ffda                  2     R     0xFFDA     0xFFDB   .absSeg0
 .abs_section_ffdc                  2     R     0xFFDC     0xFFDD   .absSeg1
-.abs_section_ffca                  2     R     0xFFCA     0xFFCB   .absSeg2
-.abs_section_0                     1   N/I        0x0        0x0   .absSeg3
-.abs_section_1                     1   N/I        0x1        0x1   .absSeg4
-.abs_section_2                     1   N/I        0x2        0x2   .absSeg5
-.abs_section_3                     1   N/I        0x3        0x3   .absSeg6
-.abs_section_4                     1   N/I        0x4        0x4   .absSeg7
-.abs_section_5                     1   N/I        0x5        0x5   .absSeg8
-.abs_section_e                     1   N/I        0xE        0xE   .absSeg9
-.abs_section_10                    1   N/I       0x10       0x10   .absSeg10
-.abs_section_11                    1   N/I       0x11       0x11   .absSeg11
-.abs_section_16                    1   N/I       0x16       0x16   .absSeg12
-.abs_section_17                    1   N/I       0x17       0x17   .absSeg13
-.abs_section_18                    1   N/I       0x18       0x18   .absSeg14
-.abs_section_1a                    1   N/I       0x1A       0x1A   .absSeg15
-.abs_section_1c                    1   N/I       0x1C       0x1C   .absSeg16
-.abs_section_1d                    1   N/I       0x1D       0x1D   .absSeg17
-.abs_section_1e                    1   N/I       0x1E       0x1E   .absSeg18
-.abs_section_1f                    1   N/I       0x1F       0x1F   .absSeg19
-.abs_section_20                    1   N/I       0x20       0x20   .absSeg20
-.abs_section_25                    1   N/I       0x25       0x25   .absSeg21
-.abs_section_28                    1   N/I       0x28       0x28   .absSeg22
-.abs_section_3a                    1   N/I       0x3A       0x3A   .absSeg23
-.abs_section_3b                    1   N/I       0x3B       0x3B   .absSeg24
-.abs_section_3c                    1   N/I       0x3C       0x3C   .absSeg25
-.abs_section_3d                    1   N/I       0x3D       0x3D   .absSeg26
-.abs_section_3e                    1   N/I       0x3E       0x3E   .absSeg27
-.abs_section_3f                    1   N/I       0x3F       0x3F   .absSeg28
-.abs_section_48                    1   N/I       0x48       0x48   .absSeg29
-.abs_section_49                    1   N/I       0x49       0x49   .absSeg30
-.abs_section_4a                    1   N/I       0x4A       0x4A   .absSeg31
-.abs_section_4b                    1   N/I       0x4B       0x4B   .absSeg32
-.abs_section_50                    1   N/I       0x50       0x50   .absSeg33
-.abs_section_51                    1   N/I       0x51       0x51   .absSeg34
-.abs_section_52                    1   N/I       0x52       0x52   .absSeg35
-.abs_section_53                    1   N/I       0x53       0x53   .absSeg36
-.abs_section_55                    1   N/I       0x55       0x55   .absSeg37
-.abs_section_58                    1   N/I       0x58       0x58   .absSeg38
-.abs_section_59                    1   N/I       0x59       0x59   .absSeg39
-.abs_section_5a                    1   N/I       0x5A       0x5A   .absSeg40
-.abs_section_5b                    1   N/I       0x5B       0x5B   .absSeg41
-.abs_section_5c                    1   N/I       0x5C       0x5C   .absSeg42
-.abs_section_5d                    1   N/I       0x5D       0x5D   .absSeg43
-.abs_section_60                    1   N/I       0x60       0x60   .absSeg44
-.abs_section_65                    1   N/I       0x65       0x65   .absSeg45
-.abs_section_68                    1   N/I       0x68       0x68   .absSeg46
-.abs_section_6c                    1   N/I       0x6C       0x6C   .absSeg47
-.abs_section_6d                    1   N/I       0x6D       0x6D   .absSeg48
-.abs_section_6e                    1   N/I       0x6E       0x6E   .absSeg49
-.abs_section_1800                  1   N/I     0x1800     0x1800   .absSeg50
-.abs_section_1801                  1   N/I     0x1801     0x1801   .absSeg51
-.abs_section_1802                  1   N/I     0x1802     0x1802   .absSeg52
-.abs_section_1803                  1   N/I     0x1803     0x1803   .absSeg53
-.abs_section_1809                  1   N/I     0x1809     0x1809   .absSeg54
-.abs_section_180a                  1   N/I     0x180A     0x180A   .absSeg55
-.abs_section_1816                  1   N/I     0x1816     0x1816   .absSeg56
-.abs_section_1817                  1   N/I     0x1817     0x1817   .absSeg57
-.abs_section_1818                  1   N/I     0x1818     0x1818   .absSeg58
-.abs_section_1820                  1   N/I     0x1820     0x1820   .absSeg59
-.abs_section_1821                  1   N/I     0x1821     0x1821   .absSeg60
-.abs_section_1823                  1   N/I     0x1823     0x1823   .absSeg61
-.abs_section_1824                  1   N/I     0x1824     0x1824   .absSeg62
-.abs_section_1825                  1   N/I     0x1825     0x1825   .absSeg63
-.abs_section_1826                  1   N/I     0x1826     0x1826   .absSeg64
-.abs_section_1840                  1   N/I     0x1840     0x1840   .absSeg65
-.abs_section_1841                  1   N/I     0x1841     0x1841   .absSeg66
-.abs_section_1842                  1   N/I     0x1842     0x1842   .absSeg67
-.abs_section_1844                  1   N/I     0x1844     0x1844   .absSeg68
-.abs_section_1845                  1   N/I     0x1845     0x1845   .absSeg69
-.abs_section_1846                  1   N/I     0x1846     0x1846   .absSeg70
-.abs_section_1848                  1   N/I     0x1848     0x1848   .absSeg71
-.abs_section_1849                  1   N/I     0x1849     0x1849   .absSeg72
-.abs_section_184a                  1   N/I     0x184A     0x184A   .absSeg73
-.abs_section_184c                  1   N/I     0x184C     0x184C   .absSeg74
-.abs_section_184d                  1   N/I     0x184D     0x184D   .absSeg75
-.abs_section_184e                  1   N/I     0x184E     0x184E   .absSeg76
-.abs_section_1850                  1   N/I     0x1850     0x1850   .absSeg77
-.abs_section_1851                  1   N/I     0x1851     0x1851   .absSeg78
-.abs_section_1852                  1   N/I     0x1852     0x1852   .absSeg79
-.abs_section_1853                  1   N/I     0x1853     0x1853   .absSeg80
-.abs_section_12                    2   N/I       0x12       0x13   .absSeg81
-.abs_section_14                    2   N/I       0x14       0x15   .absSeg82
-.abs_section_21                    2   N/I       0x21       0x22   .absSeg83
-.abs_section_23                    2   N/I       0x23       0x24   .absSeg84
-.abs_section_26                    2   N/I       0x26       0x27   .absSeg85
-.abs_section_29                    2   N/I       0x29       0x2A   .absSeg86
-.abs_section_38                    2   N/I       0x38       0x39   .absSeg87
-.abs_section_61                    2   N/I       0x61       0x62   .absSeg88
-.abs_section_63                    2   N/I       0x63       0x64   .absSeg89
-.abs_section_66                    2   N/I       0x66       0x67   .absSeg90
-.abs_section_69                    2   N/I       0x69       0x6A   .absSeg91
-.abs_section_1806                  2   N/I     0x1806     0x1807   .absSeg92
-.abs_section_1810                  2   N/I     0x1810     0x1811   .absSeg93
-.abs_section_1812                  2   N/I     0x1812     0x1813   .absSeg94
-.abs_section_1814                  2   N/I     0x1814     0x1815   .absSeg95
-.bss                               2   R/W      0x103      0x104   RAM
-.common                            4   R/W      0x105      0x108   RAM
-.stack                            64   R/W      0x109      0x148   RAM
-.vectSeg96_vect                    2     R     0xFFFE     0xFFFF   .vectSeg96
+.abs_section_ffd6                  2     R     0xFFD6     0xFFD7   .absSeg2
+.abs_section_ffca                  2     R     0xFFCA     0xFFCB   .absSeg3
+.abs_section_0                     1   N/I        0x0        0x0   .absSeg4
+.abs_section_1                     1   N/I        0x1        0x1   .absSeg5
+.abs_section_2                     1   N/I        0x2        0x2   .absSeg6
+.abs_section_3                     1   N/I        0x3        0x3   .absSeg7
+.abs_section_4                     1   N/I        0x4        0x4   .absSeg8
+.abs_section_5                     1   N/I        0x5        0x5   .absSeg9
+.abs_section_e                     1   N/I        0xE        0xE   .absSeg10
+.abs_section_10                    1   N/I       0x10       0x10   .absSeg11
+.abs_section_11                    1   N/I       0x11       0x11   .absSeg12
+.abs_section_16                    1   N/I       0x16       0x16   .absSeg13
+.abs_section_17                    1   N/I       0x17       0x17   .absSeg14
+.abs_section_18                    1   N/I       0x18       0x18   .absSeg15
+.abs_section_1a                    1   N/I       0x1A       0x1A   .absSeg16
+.abs_section_1c                    1   N/I       0x1C       0x1C   .absSeg17
+.abs_section_1d                    1   N/I       0x1D       0x1D   .absSeg18
+.abs_section_1e                    1   N/I       0x1E       0x1E   .absSeg19
+.abs_section_1f                    1   N/I       0x1F       0x1F   .absSeg20
+.abs_section_20                    1   N/I       0x20       0x20   .absSeg21
+.abs_section_25                    1   N/I       0x25       0x25   .absSeg22
+.abs_section_28                    1   N/I       0x28       0x28   .absSeg23
+.abs_section_3a                    1   N/I       0x3A       0x3A   .absSeg24
+.abs_section_3b                    1   N/I       0x3B       0x3B   .absSeg25
+.abs_section_3c                    1   N/I       0x3C       0x3C   .absSeg26
+.abs_section_3d                    1   N/I       0x3D       0x3D   .absSeg27
+.abs_section_3e                    1   N/I       0x3E       0x3E   .absSeg28
+.abs_section_3f                    1   N/I       0x3F       0x3F   .absSeg29
+.abs_section_48                    1   N/I       0x48       0x48   .absSeg30
+.abs_section_49                    1   N/I       0x49       0x49   .absSeg31
+.abs_section_4a                    1   N/I       0x4A       0x4A   .absSeg32
+.abs_section_4b                    1   N/I       0x4B       0x4B   .absSeg33
+.abs_section_50                    1   N/I       0x50       0x50   .absSeg34
+.abs_section_51                    1   N/I       0x51       0x51   .absSeg35
+.abs_section_52                    1   N/I       0x52       0x52   .absSeg36
+.abs_section_53                    1   N/I       0x53       0x53   .absSeg37
+.abs_section_55                    1   N/I       0x55       0x55   .absSeg38
+.abs_section_58                    1   N/I       0x58       0x58   .absSeg39
+.abs_section_59                    1   N/I       0x59       0x59   .absSeg40
+.abs_section_5a                    1   N/I       0x5A       0x5A   .absSeg41
+.abs_section_5b                    1   N/I       0x5B       0x5B   .absSeg42
+.abs_section_5c                    1   N/I       0x5C       0x5C   .absSeg43
+.abs_section_5d                    1   N/I       0x5D       0x5D   .absSeg44
+.abs_section_60                    1   N/I       0x60       0x60   .absSeg45
+.abs_section_65                    1   N/I       0x65       0x65   .absSeg46
+.abs_section_68                    1   N/I       0x68       0x68   .absSeg47
+.abs_section_6c                    1   N/I       0x6C       0x6C   .absSeg48
+.abs_section_6d                    1   N/I       0x6D       0x6D   .absSeg49
+.abs_section_6e                    1   N/I       0x6E       0x6E   .absSeg50
+.abs_section_1800                  1   N/I     0x1800     0x1800   .absSeg51
+.abs_section_1801                  1   N/I     0x1801     0x1801   .absSeg52
+.abs_section_1802                  1   N/I     0x1802     0x1802   .absSeg53
+.abs_section_1803                  1   N/I     0x1803     0x1803   .absSeg54
+.abs_section_1809                  1   N/I     0x1809     0x1809   .absSeg55
+.abs_section_180a                  1   N/I     0x180A     0x180A   .absSeg56
+.abs_section_1816                  1   N/I     0x1816     0x1816   .absSeg57
+.abs_section_1817                  1   N/I     0x1817     0x1817   .absSeg58
+.abs_section_1818                  1   N/I     0x1818     0x1818   .absSeg59
+.abs_section_1820                  1   N/I     0x1820     0x1820   .absSeg60
+.abs_section_1821                  1   N/I     0x1821     0x1821   .absSeg61
+.abs_section_1823                  1   N/I     0x1823     0x1823   .absSeg62
+.abs_section_1824                  1   N/I     0x1824     0x1824   .absSeg63
+.abs_section_1825                  1   N/I     0x1825     0x1825   .absSeg64
+.abs_section_1826                  1   N/I     0x1826     0x1826   .absSeg65
+.abs_section_1840                  1   N/I     0x1840     0x1840   .absSeg66
+.abs_section_1841                  1   N/I     0x1841     0x1841   .absSeg67
+.abs_section_1842                  1   N/I     0x1842     0x1842   .absSeg68
+.abs_section_1844                  1   N/I     0x1844     0x1844   .absSeg69
+.abs_section_1845                  1   N/I     0x1845     0x1845   .absSeg70
+.abs_section_1846                  1   N/I     0x1846     0x1846   .absSeg71
+.abs_section_1848                  1   N/I     0x1848     0x1848   .absSeg72
+.abs_section_1849                  1   N/I     0x1849     0x1849   .absSeg73
+.abs_section_184a                  1   N/I     0x184A     0x184A   .absSeg74
+.abs_section_184c                  1   N/I     0x184C     0x184C   .absSeg75
+.abs_section_184d                  1   N/I     0x184D     0x184D   .absSeg76
+.abs_section_184e                  1   N/I     0x184E     0x184E   .absSeg77
+.abs_section_1850                  1   N/I     0x1850     0x1850   .absSeg78
+.abs_section_1851                  1   N/I     0x1851     0x1851   .absSeg79
+.abs_section_1852                  1   N/I     0x1852     0x1852   .absSeg80
+.abs_section_1853                  1   N/I     0x1853     0x1853   .absSeg81
+.abs_section_12                    2   N/I       0x12       0x13   .absSeg82
+.abs_section_14                    2   N/I       0x14       0x15   .absSeg83
+.abs_section_21                    2   N/I       0x21       0x22   .absSeg84
+.abs_section_23                    2   N/I       0x23       0x24   .absSeg85
+.abs_section_26                    2   N/I       0x26       0x27   .absSeg86
+.abs_section_29                    2   N/I       0x29       0x2A   .absSeg87
+.abs_section_38                    2   N/I       0x38       0x39   .absSeg88
+.abs_section_61                    2   N/I       0x61       0x62   .absSeg89
+.abs_section_63                    2   N/I       0x63       0x64   .absSeg90
+.abs_section_66                    2   N/I       0x66       0x67   .absSeg91
+.abs_section_69                    2   N/I       0x69       0x6A   .absSeg92
+.abs_section_1806                  2   N/I     0x1806     0x1807   .absSeg93
+.abs_section_1810                  2   N/I     0x1810     0x1811   .absSeg94
+.abs_section_1812                  2   N/I     0x1812     0x1813   .absSeg95
+.abs_section_1814                  2   N/I     0x1814     0x1815   .absSeg96
+.bss                               6   R/W      0x107      0x10C   RAM
+.common                            4   R/W      0x10D      0x110   RAM
+.stack                            64   R/W      0x111      0x150   RAM
+.vectSeg97_vect                    2     R     0xFFFE     0xFFFF   .vectSeg97
 
 Summary of section sizes per section type:
-READ_ONLY (R):         362 (dec:      866)
-READ_WRITE (R/W):       49 (dec:       73)
+READ_ONLY (R):         65B (dec:     1627)
+READ_WRITE (R/W):       51 (dec:       81)
 NO_INIT (N/I):          6C (dec:      108)
 
 *********************************************************************************************
@@ -156,40 +159,63 @@ OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 MODULE:                 -- SCI_c.obj --
 - PROCEDURES:
-     InitSCI                                   E1AE       F      15       1   .text       
-     PutSCI                                    E1BD      30      48       2   .text       
-     SCI_TXisr                                 E1ED      20      32       1   .text       
-     SCI_RXisr                                 E20D       A      10       1   .text       
+     InitSCI                                   E216       F      15       1   .text       
+     PutSCI                                    E225      30      48       3   .text       
+     SCI_TXisr                                 E255      20      32       1   .text       
+     SCI_RXisr                                 E275       A      10       1   .text       
 - VARIABLES:
      _Vector_18                                FFDA       2       2       0   .abs_section_ffda
      _Vector_17                                FFDC       2       2       0   .abs_section_ffdc
-     buffer_tx                                  105       2       2       3   .common     
-     cant_tx                                    107       1       1       4   .common     
-     rx_byte                                    108       1       1       1   .common     
+     buffer_tx                                  10D       2       2       3   .common     
+     cant_tx                                    10F       1       1       4   .common     
+     rx_byte                                    110       1       1       1   .common     
+MODULE:                 -- keyboard_c.obj --
+- PROCEDURES:
+     GetKEY                                    E27F      FF     255       6   .text       
+     PushKEY                                   E37E       6       6       1   .text       
+     TicKEY                                    E384       A      10       1   .text       
+- VARIABLES:
+     keyb_map                                  E092       C      12       1   .rodata     
+     key_press                                  100       1       1       7   .data       
+     keyb_fila                                  101       1       1       7   .data       
+     keyb_col                                   102       1       1       6   .data       
+     keyb_status.1                              107       1       1       2   .bss        
+     keyb_delay                                 108       1       1       6   .bss        
+     keyb_press                                 109       1       1       3   .bss        
 MODULE:                 -- main_c.obj --
 - PROCEDURES:
-     Init_Ports                                E217      15      21       1   .text       
-     InitTimer                                 E22C      11      17       1   .text       
-     MTIMISR                                   E23D      11      17       1   .text       
-     Motor_run                                 E24E      13      19       3   .text       
-     Motor_stop                                E261       5       5       3   .text       
-     PWRD                                      E266       A      10       1   .text       
-     main                                      E270      E1     225       7   .text       
+     Init_Ports                                E38E      31      49       1   .text       
+     InitTimer                                 E3BF      11      17       1   .text       
+     PortaIsr                                  E3D0       D      13       1   .text       
+     MTIMISR                                   E3DD      14      20       1   .text       
+     Motor_run                                 E3F1      13      19       3   .text       
+     Motor_stop                                E404       5       5       3   .text       
+     main                                      E409     23B     571      22   .text       
 - VARIABLES:
-     STRING.Abriendo.el.porton..1              E092      14      20       1   .rodata1    
-     STRING.El.porton.esta.abier.2             E0A6      23      35       1   .rodata1    
-     STRING.Porton.cerrado..ingr.3             E0C9      23      35       1   .rodata1    
-     STRING.Porton.Abierto..espe.4             E0EC      1E      30       1   .rodata1    
-     STRING.El.porton.se.cerrara.5             E10A      21      33       1   .rodata1    
-     STRING.El.porton.se.cerrara.6             E12B      21      33       1   .rodata1    
-     STRING.El.porton.se.cerrara.7             E14C      21      33       1   .rodata1    
-     STRING.Cerrando..8                        E16D       A      10       1   .rodata1    
-     STRING.Porton.cerrado..ingr.9             E177      23      35       1   .rodata1    
-     STRING.Abriendo.el.porton..10             E19A      14      20       1   .rodata1    
-     tout                                       100       2       2       4   .data       
-     sucess                                     102       1       1       4   .data       
-     abriendo                                   103       1       1       3   .bss        
-     cerrando                                   104       1       1       4   .bss        
+     codigo                                    E09E       5       5       1   .rodata     
+     STRING.Abriendo.el.porton...2             E0A3      15      21       1   .rodata1    
+     STRING.El.porton.esta.abier.3             E0B8      24      36       1   .rodata1    
+     STRING.Porton.cerrado..ingr.4             E0DC      24      36       1   .rodata1    
+     STRING.Porton.Abierto..espe.5             E100      1F      31       1   .rodata1    
+     STRING.El.porton.se.cerrara.6             E11F      22      34       1   .rodata1    
+     STRING.El.porton.se.cerrara.7             E141      22      34       1   .rodata1    
+     STRING.El.porton.se.cerrara.8             E163      22      34       1   .rodata1    
+     STRING.Cerrando...9                       E185       B      11       1   .rodata1    
+     STRING.Porton.cerrado..ingr.10            E190      24      36       1   .rodata1    
+     STRING...11                               E1B4       2       2       1   .rodata1    
+     STRING...12                               E1B6       2       2       1   .rodata1    
+     STRING...13                               E1B8       2       2       1   .rodata1    
+     STRING.....14                             E1BA       4       4       1   .rodata1    
+     STRING.Password.incorrecto..15            E1BE      16      22       1   .rodata1    
+     STRING.Reingrese.el.Passwor.16            E1D4      19      25       1   .rodata1    
+     STRING.Password.correcto...17             E1ED      14      20       1   .rodata1    
+     STRING.Abriendo.el.porton...18            E201      15      21       1   .rodata1    
+     cerrando                                   103       1       1       4   .data       
+     tout                                       104       2       2       4   .data       
+     sucess                                     106       1       1       4   .data       
+     PWRD_OK                                    10A       2       2       4   .bss        
+     abriendo                                   10C       1       1       3   .bss        
+     _Vector_20                                FFD6       2       2       0   .abs_section_ffd6
      _Vector_26                                FFCA       2       2       0   .abs_section_ffca
 MODULE:                 -- start08_c.obj --
 - PROCEDURES:
@@ -199,16 +225,16 @@ MODULE:                 -- start08_c.obj --
 - VARIABLES:
      _startupData                              E084       6       6       4   .startData  
 - LABELS:
-     __SEG_END_SSTACK                           149       0       0       1               
+     __SEG_END_SSTACK                           151       0       0       1               
 MODULE:                 -- mc9s08sh8_c.obj --
 - PROCEDURES:
 - VARIABLES:
-     _PTAD                                        0       1       1      12   .abs_section_0
-     _PTADD                                       1       1       1       3   .abs_section_1
-     _PTBD                                        2       1       1       8   .abs_section_2
-     _PTBDD                                       3       1       1       2   .abs_section_3
-     _PTCD                                        4       1       1       0   .abs_section_4
-     _PTCDD                                       5       1       1       0   .abs_section_5
+     _PTAD                                        0       1       1      10   .abs_section_0
+     _PTADD                                       1       1       1       2   .abs_section_1
+     _PTBD                                        2       1       1      13   .abs_section_2
+     _PTBDD                                       3       1       1       3   .abs_section_3
+     _PTCD                                        4       1       1       2   .abs_section_4
+     _PTCDD                                       5       1       1       1   .abs_section_5
      _ACMPSC                                      E       1       1       0   .abs_section_e
      _ADCSC1                                     10       1       1       0   .abs_section_10
      _ADCSC2                                     11       1       1       0   .abs_section_11
@@ -268,9 +294,9 @@ MODULE:                 -- mc9s08sh8_c.obj --
      _PTAPE                                    1840       1       1       0   .abs_section_1840
      _PTASE                                    1841       1       1       0   .abs_section_1841
      _PTADS                                    1842       1       1       0   .abs_section_1842
-     _PTASC                                    1844       1       1       0   .abs_section_1844
-     _PTAPS                                    1845       1       1       0   .abs_section_1845
-     _PTAES                                    1846       1       1       0   .abs_section_1846
+     _PTASC                                    1844       1       1       2   .abs_section_1844
+     _PTAPS                                    1845       1       1       1   .abs_section_1845
+     _PTAES                                    1846       1       1       1   .abs_section_1846
      _PTBPE                                    1848       1       1       0   .abs_section_1848
      _PTBSE                                    1849       1       1       0   .abs_section_1849
      _PTBDS                                    184A       1       1       0   .abs_section_184a
@@ -302,35 +328,42 @@ MODULE STATISTIC
   Name                                      Data   Code  Const
 ---------------------------------------------------------------------------------------------
   SCI_c.obj                                    4    105      4
-  main_c.obj                                   5    314    286
+  keyboard_c.obj                               6    271     12
+  main_c.obj                                   7    694    380
   start08_c.obj                                0    132      0
   mc9s08sh8_c.obj                            108      0      0
-  other                                       64     16      9
+  other                                       64     16     13
 
 *********************************************************************************************
 SECTION USE IN OBJECT-ALLOCATION SECTION
 ---------------------------------------------------------------------------------------------
 SECTION: ".text"
-  InitSCI PutSCI SCI_TXisr SCI_RXisr Init_Ports InitTimer MTIMISR Motor_run 
-  Motor_stop PWRD main 
+  InitSCI PutSCI SCI_TXisr SCI_RXisr GetKEY PushKEY TicKEY Init_Ports 
+  InitTimer PortaIsr MTIMISR Motor_run Motor_stop main 
 SECTION: ".data"
-  tout sucess 
+  key_press keyb_fila keyb_col cerrando tout sucess 
 SECTION: ".bss"
-  abriendo cerrando 
+  keyb_status.1 keyb_delay keyb_press PWRD_OK abriendo 
 SECTION: ".init"
   loadByte Init _Startup 
+SECTION: ".rodata"
+  keyb_map codigo 
 SECTION: ".rodata1"
-  STRING.Abriendo.el.porton..1 STRING.El.porton.esta.abier.2 
-  STRING.Porton.cerrado..ingr.3 STRING.Porton.Abierto..espe.4 
-  STRING.El.porton.se.cerrara.5 STRING.El.porton.se.cerrara.6 
-  STRING.El.porton.se.cerrara.7 STRING.Cerrando..8 
-  STRING.Porton.cerrado..ingr.9 STRING.Abriendo.el.porton..10 
+  STRING.Abriendo.el.porton...2 STRING.El.porton.esta.abier.3 
+  STRING.Porton.cerrado..ingr.4 STRING.Porton.Abierto..espe.5 
+  STRING.El.porton.se.cerrara.6 STRING.El.porton.se.cerrara.7 
+  STRING.El.porton.se.cerrara.8 STRING.Cerrando...9 
+  STRING.Porton.cerrado..ingr.10 STRING...11 STRING...12 STRING...13 
+  STRING.....14 STRING.Password.incorrecto..15 STRING.Reingrese.el.Passwor.16 
+  STRING.Password.correcto...17 STRING.Abriendo.el.porton...18 
 SECTION: ".abs_section_ffda"
   _Vector_18 
 SECTION: ".abs_section_ffdc"
   _Vector_17 
 SECTION: ".common"
   buffer_tx cant_tx rx_byte 
+SECTION: ".abs_section_ffd6"
+  _Vector_20 
 SECTION: ".abs_section_ffca"
   _Vector_26 
 SECTION: ".abs_section_0"
@@ -524,12 +557,12 @@ SECTION: ".abs_section_1814"
 OBJECT LIST SORTED BY ADDRESS
      Name                                      Addr   hSize   dSize     Ref    Section   RLIB
 ---------------------------------------------------------------------------------------------
-     _PTAD                                        0       1       1      12   .abs_section_0
-     _PTADD                                       1       1       1       3   .abs_section_1
-     _PTBD                                        2       1       1       8   .abs_section_2
-     _PTBDD                                       3       1       1       2   .abs_section_3
-     _PTCD                                        4       1       1       0   .abs_section_4
-     _PTCDD                                       5       1       1       0   .abs_section_5
+     _PTAD                                        0       1       1      10   .abs_section_0
+     _PTADD                                       1       1       1       2   .abs_section_1
+     _PTBD                                        2       1       1      13   .abs_section_2
+     _PTBDD                                       3       1       1       3   .abs_section_3
+     _PTCD                                        4       1       1       2   .abs_section_4
+     _PTCDD                                       5       1       1       1   .abs_section_5
      _ACMPSC                                      E       1       1       0   .abs_section_e
      _ADCSC1                                     10       1       1       0   .abs_section_10
      _ADCSC2                                     11       1       1       0   .abs_section_11
@@ -582,13 +615,20 @@ OBJECT LIST SORTED BY ADDRESS
      _RTCSC                                      6C       1       1       0   .abs_section_6c
      _RTCCNT                                     6D       1       1       0   .abs_section_6d
      _RTCMOD                                     6E       1       1       0   .abs_section_6e
-     tout                                       100       2       2       4   .data       
-     sucess                                     102       1       1       4   .data       
-     abriendo                                   103       1       1       3   .bss        
-     cerrando                                   104       1       1       4   .bss        
-     buffer_tx                                  105       2       2       3   .common     
-     cant_tx                                    107       1       1       4   .common     
-     rx_byte                                    108       1       1       1   .common     
+     key_press                                  100       1       1       7   .data       
+     keyb_fila                                  101       1       1       7   .data       
+     keyb_col                                   102       1       1       6   .data       
+     cerrando                                   103       1       1       4   .data       
+     tout                                       104       2       2       4   .data       
+     sucess                                     106       1       1       4   .data       
+     keyb_status.1                              107       1       1       2   .bss        
+     keyb_delay                                 108       1       1       6   .bss        
+     keyb_press                                 109       1       1       3   .bss        
+     PWRD_OK                                    10A       2       2       4   .bss        
+     abriendo                                   10C       1       1       3   .bss        
+     buffer_tx                                  10D       2       2       3   .common     
+     cant_tx                                    10F       1       1       4   .common     
+     rx_byte                                    110       1       1       1   .common     
      _SRS                                      1800       1       1       1   .abs_section_1800
      _SBDFR                                    1801       1       1       0   .abs_section_1801
      _SOPT1                                    1802       1       1       0   .abs_section_1802
@@ -611,9 +651,9 @@ OBJECT LIST SORTED BY ADDRESS
      _PTAPE                                    1840       1       1       0   .abs_section_1840
      _PTASE                                    1841       1       1       0   .abs_section_1841
      _PTADS                                    1842       1       1       0   .abs_section_1842
-     _PTASC                                    1844       1       1       0   .abs_section_1844
-     _PTAPS                                    1845       1       1       0   .abs_section_1845
-     _PTAES                                    1846       1       1       0   .abs_section_1846
+     _PTASC                                    1844       1       1       2   .abs_section_1844
+     _PTAPS                                    1845       1       1       1   .abs_section_1845
+     _PTAES                                    1846       1       1       1   .abs_section_1846
      _PTBPE                                    1848       1       1       0   .abs_section_1848
      _PTBSE                                    1849       1       1       0   .abs_section_1849
      _PTBDS                                    184A       1       1       0   .abs_section_184a
@@ -627,28 +667,41 @@ OBJECT LIST SORTED BY ADDRESS
      loadByte                                  E000       E      14       5   .init       
      Init                                      E00E      6D     109       1   .init       
      _Startup                                  E07B       9       9       0   .init       
-     STRING.Abriendo.el.porton..1              E092      14      20       1   .rodata1    
-     STRING.El.porton.esta.abier.2             E0A6      23      35       1   .rodata1    
-     STRING.Porton.cerrado..ingr.3             E0C9      23      35       1   .rodata1    
-     STRING.Porton.Abierto..espe.4             E0EC      1E      30       1   .rodata1    
-     STRING.El.porton.se.cerrara.5             E10A      21      33       1   .rodata1    
-     STRING.El.porton.se.cerrara.6             E12B      21      33       1   .rodata1    
-     STRING.El.porton.se.cerrara.7             E14C      21      33       1   .rodata1    
-     STRING.Cerrando..8                        E16D       A      10       1   .rodata1    
-     STRING.Porton.cerrado..ingr.9             E177      23      35       1   .rodata1    
-     STRING.Abriendo.el.porton..10             E19A      14      20       1   .rodata1    
-     InitSCI                                   E1AE       F      15       1   .text       
-     PutSCI                                    E1BD      30      48       2   .text       
-     SCI_TXisr                                 E1ED      20      32       1   .text       
-     SCI_RXisr                                 E20D       A      10       1   .text       
-     Init_Ports                                E217      15      21       1   .text       
-     InitTimer                                 E22C      11      17       1   .text       
-     MTIMISR                                   E23D      11      17       1   .text       
-     Motor_run                                 E24E      13      19       3   .text       
-     Motor_stop                                E261       5       5       3   .text       
-     PWRD                                      E266       A      10       1   .text       
-     main                                      E270      E1     225       7   .text       
+     keyb_map                                  E092       C      12       1   .rodata     
+     codigo                                    E09E       5       5       1   .rodata     
+     STRING.Abriendo.el.porton...2             E0A3      15      21       1   .rodata1    
+     STRING.El.porton.esta.abier.3             E0B8      24      36       1   .rodata1    
+     STRING.Porton.cerrado..ingr.4             E0DC      24      36       1   .rodata1    
+     STRING.Porton.Abierto..espe.5             E100      1F      31       1   .rodata1    
+     STRING.El.porton.se.cerrara.6             E11F      22      34       1   .rodata1    
+     STRING.El.porton.se.cerrara.7             E141      22      34       1   .rodata1    
+     STRING.El.porton.se.cerrara.8             E163      22      34       1   .rodata1    
+     STRING.Cerrando...9                       E185       B      11       1   .rodata1    
+     STRING.Porton.cerrado..ingr.10            E190      24      36       1   .rodata1    
+     STRING...11                               E1B4       2       2       1   .rodata1    
+     STRING...12                               E1B6       2       2       1   .rodata1    
+     STRING...13                               E1B8       2       2       1   .rodata1    
+     STRING.....14                             E1BA       4       4       1   .rodata1    
+     STRING.Password.incorrecto..15            E1BE      16      22       1   .rodata1    
+     STRING.Reingrese.el.Passwor.16            E1D4      19      25       1   .rodata1    
+     STRING.Password.correcto...17             E1ED      14      20       1   .rodata1    
+     STRING.Abriendo.el.porton...18            E201      15      21       1   .rodata1    
+     InitSCI                                   E216       F      15       1   .text       
+     PutSCI                                    E225      30      48       3   .text       
+     SCI_TXisr                                 E255      20      32       1   .text       
+     SCI_RXisr                                 E275       A      10       1   .text       
+     GetKEY                                    E27F      FF     255       6   .text       
+     PushKEY                                   E37E       6       6       1   .text       
+     TicKEY                                    E384       A      10       1   .text       
+     Init_Ports                                E38E      31      49       1   .text       
+     InitTimer                                 E3BF      11      17       1   .text       
+     PortaIsr                                  E3D0       D      13       1   .text       
+     MTIMISR                                   E3DD      14      20       1   .text       
+     Motor_run                                 E3F1      13      19       3   .text       
+     Motor_stop                                E404       5       5       3   .text       
+     main                                      E409     23B     571      22   .text       
      _Vector_26                                FFCA       2       2       0   .abs_section_ffca
+     _Vector_20                                FFD6       2       2       0   .abs_section_ffd6
      _Vector_18                                FFDA       2       2       0   .abs_section_ffda
      _Vector_17                                FFDC       2       2       0   .abs_section_ffdc
 
@@ -662,16 +715,28 @@ SCI_c.obj:
 *********************************************************************************************
 COPYDOWN SECTION
 ---------------------------------------------------------------------------------------------
-------- ROM-ADDRESS: 0xE351 ---- SIZE       4 ---
+------- ROM-ADDRESS: 0xE644 ---- SIZE       4 ---
 Filling bytes inserted
- 00030100
-------- ROM-ADDRESS: 0xE355 ---- RAM-ADDRESS: 0x100 ---- SIZE       2 ---
+ 00070100
+------- ROM-ADDRESS: 0xE648 ---- RAM-ADDRESS: 0x100 ---- SIZE       1 ---
+Name of initialized Object : key_press
+ FF
+------- ROM-ADDRESS: 0xE649 ---- RAM-ADDRESS: 0x101 ---- SIZE       1 ---
+Name of initialized Object : keyb_fila
+ FF
+------- ROM-ADDRESS: 0xE64A ---- RAM-ADDRESS: 0x102 ---- SIZE       1 ---
+Name of initialized Object : keyb_col
+ FF
+------- ROM-ADDRESS: 0xE64B ---- RAM-ADDRESS: 0x103 ---- SIZE       1 ---
+Name of initialized Object : cerrando
+ 01
+------- ROM-ADDRESS: 0xE64C ---- RAM-ADDRESS: 0x104 ---- SIZE       2 ---
 Name of initialized Object : tout
  07D0
-------- ROM-ADDRESS: 0xE357 ---- RAM-ADDRESS: 0x102 ---- SIZE       1 ---
+------- ROM-ADDRESS: 0xE64E ---- RAM-ADDRESS: 0x106 ---- SIZE       1 ---
 Name of initialized Object : sucess
  01
-------- ROM-ADDRESS: 0xE358 ---- SIZE       2 ---
+------- ROM-ADDRESS: 0xE64F ---- SIZE       2 ---
 Filling bytes inserted
  0000
 
@@ -684,21 +749,30 @@ InitSCI                   USES _SCIBD _SCIC1 _SCIC2 _SCIC3
 PutSCI                    USES _SCIC2 buffer_tx cant_tx 
 SCI_TXisr                 USES _SCIS1 cant_tx buffer_tx _SCID _SCIC2 
 SCI_RXisr                 USES _SCIS1 _SCID rx_byte 
-Init_Ports                USES _PTAD _PTADD _PTBD _PTBDD 
+GetKEY                    USES keyb_status.1 keyb_press GetKEY keyb_delay 
+                                _PTAD keyb_fila _PTCD keyb_col _PTBD keyb_map 
+                                key_press 
+PushKEY                   USES keyb_press 
+TicKEY                    USES keyb_delay 
+Init_Ports                USES _PTBD _PTBDD _PTCDD _PTAD _PTADD _PTAES _PTAPS 
+                                _PTASC 
 InitTimer                 USES _MTIMSC _MTIMCLK _MTIMMOD 
-MTIMISR                   USES _MTIMSC tout 
+PortaIsr                  USES _PTASC PushKEY 
+MTIMISR                   USES _MTIMSC tout TicKEY 
 Motor_run                 USES _PTBD 
 Motor_stop                USES _PTBD 
-PWRD                      USES _PTAD 
-main                      USES Init_Ports InitSCI InitTimer Motor_stop _PTAD 
-                                main STRING.Abriendo.el.porton..1 cerrando 
-                                Motor_run STRING.El.porton.esta.abier.2 sucess 
-                                STRING.Porton.cerrado..ingr.3 PutSCI abriendo _MTIMSC 
-                                STRING.Porton.Abierto..espe.4 tout STRING.El.porton.se.cerrara.5 
+main                      USES Init_Ports InitSCI InitTimer Motor_stop main 
+                                STRING.Abriendo.el.porton...2 cerrando Motor_run 
+                                STRING.El.porton.esta.abier.3 sucess STRING.Porton.cerrado..ingr.4 PutSCI 
+                                abriendo _MTIMSC STRING.Porton.Abierto..espe.5 tout 
                                 STRING.El.porton.se.cerrara.6 STRING.El.porton.se.cerrara.7 
-                                STRING.Cerrando..8 STRING.Porton.cerrado..ingr.9 PWRD 
-                                STRING.Abriendo.el.porton..10 _SRS 
+                                STRING.El.porton.se.cerrara.8 STRING.Cerrando...9 
+                                STRING.Porton.cerrado..ingr.10 GetKEY key_press STRING...11 STRING...12 
+                                STRING...13 STRING.....14 codigo 
+                                STRING.Password.incorrecto..15 STRING.Reingrese.el.Passwor.16 PWRD_OK 
+                                STRING.Password.correcto...17 STRING.Abriendo.el.porton...18 _SRS 
 _Vector_26                USES MTIMISR 
+_Vector_20                USES PortaIsr 
 _Vector_18                USES SCI_TXisr 
 _Vector_17                USES SCI_RXisr 
 
@@ -721,7 +795,7 @@ DEPENDENCY TREE
  |  |    
  |  +- PutSCI              
  |  |    
- |  +- PWRD                
+ |  +- GetKEY              
  |       
  +- _Startup            
     | 
@@ -739,16 +813,24 @@ DEPENDENCY TREE
  | 
  +- SCI_RXisr           
       
+ _Vector_20          
+ | 
+ +- PortaIsr            
+    | 
+    +- PushKEY             
+         
  _Vector_26          
  | 
  +- MTIMISR             
-      
+    | 
+    +- TicKEY              
+         
 *********************************************************************************************
 STATISTIC SECTION
 ---------------------------------------------------------------------------------------------
 
 ExeFile:
 --------
-Number of blocks to be downloaded: 7
-Total size of all blocks to be downloaded: 866
+Number of blocks to be downloaded: 10
+Total size of all blocks to be downloaded: 1627
 

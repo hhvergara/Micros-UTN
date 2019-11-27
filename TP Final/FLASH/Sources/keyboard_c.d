@@ -1,6 +1,7 @@
 
-Sources/SCI_c.obj: \
-	C:/Users/user/workspace/TP\ Final/Project_Headers/../Sources/SCI.c \
+Sources/keyboard_c.obj: \
+	C:/Users/user/workspace/TP\ Final/Project_Headers/../Sources/keyboard.c \
+	C:/Users/user/workspace/TP\ Final/Project_Headers/keyboard.h \
 	C:/Freescale/CW\ MCU\ v10.6/MCU/lib/hc08c/include/hidef.h \
 	C:/Freescale/CW\ MCU\ v10.6/MCU/lib/hc08c/include/stddef.h \
 	C:/Freescale/CW\ MCU\ v10.6/MCU/lib/hc08c/include/stdtypes.h \
